@@ -11,13 +11,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const title = document.getElementById("title").value.trim();
     const author = document.getElementById("author").value.trim();
     const pages = Number(document.getElementById("pages").value);
-    const image = document.getElementById("image").value.trim();
+    let image = document.getElementById("image").value.trim();
     
     if (!title || !author || pages <= 0) {
       alert("Заполни поля правильно");
       return;
     }
-    
+
+    // 🔥 ФОЛБЭК ОБЛОЖКИ
+    if (!image) {
+      image = "https://via.placeholder.com/200x300?text=No+Cover";
+    }
+
     const book = {
       id: Date.now(),
       title,
@@ -25,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       totalPages: pages,
       readPages: 0,
       status: "reading",
-      image: image || "https://via.placeholder.com/200x300?text=No+Cover"
+      image
     };
     
     books.push(book);
