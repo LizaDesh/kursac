@@ -178,12 +178,6 @@ body.loaded {
 
 /* ===================== */
 /* ===== КОНТЕНТ ===== */
-.book-content {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;                 /* занимает всё оставшееся место */
-}
 
 .book-cover {
   width: 100%;
@@ -314,6 +308,49 @@ body.loaded {
   height: 100%;
   background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
   transition: width 0.4s ease;
+}
+/* ===================== */
+/* ===== БИБЛИОТЕКА ===== */
+.more-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  user-select: none;
+
+  background: linear-gradient(
+    135deg,
+    rgba(185, 28, 28, 0.25),
+    rgba(59, 130, 246, 0.15)
+  );
+
+  transition: 0.3s ease;
+}
+
+.more-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(185, 28, 28, 0.35);
+}
+
+.more-content {
+  text-align: center;
+}
+
+.more-content .plus {
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.more-content .text {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.more-content .subtext {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-top: 4px;
 }
 
 /* ===================== */
