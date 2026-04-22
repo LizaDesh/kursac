@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Добавить книгу</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- Шапка -->
+    <header class="header">
+      <h1>➕ Добавить книгу</h1>
+      <a href="index.html" class="back-btn">← Назад</a>
+    </header>
+
+    <!-- Форма -->
+    <main class="card">
+
+      <form id="bookForm" class="form vertical">
+
+        <div class="input-group">
+          <label for="title">Название</label>
+          <input 
+            type="text" 
+            id="title" 
+            name="title"
+            placeholder="Например: Гарри Поттер"
+            required
+          >
+        </div>
+
+        <div class="input-group">
+          <label for="author">Автор</label>
+          <input 
+            type="text" 
+            id="author" 
+            name="author"
+            placeholder="Например: Дж. К. Роулинг"
+            required
+          >
+        </div>
+
+        <div class="input-group">
+          <label for="pages">Страницы</label>
+          <input 
+            type="number" 
+            id="pages" 
+            name="pages"
+            placeholder="Например: 350"
+            min="1"
+            required
+          >
+        </div>
+
+        <div class="input-group">
+          <label for="image">Ссылка на обложку</label>
+          <input 
+            type="url" 
+            id="image" 
+            name="image"
+            placeholder="https://..."
+          >
+        </div>
+
+        <button type="submit" class="save-btn">
+          💾 Сохранить
+        </button>
+
+      </form>
+
+    </main>
+
+  </div>
+
+  <script src="data.js"></script>
+  <script src="add.js"></script>
+  <script src="../theme.js"></script>
+
+</body>
