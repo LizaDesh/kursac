@@ -129,6 +129,7 @@ body.loaded {
 /* ===== КАРТОЧКИ ===== */
 .card,
 .book-card {
+  position: relative;
   background: var(--color-card-bg);
   backdrop-filter: blur(18px);
   border-radius: 18px;
@@ -145,6 +146,7 @@ body.loaded {
 }
 
 .book-card::after {
+  pointer-events: none;
   content: "";
   position: absolute;
   inset: 0;

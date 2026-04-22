@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Tracker</title>
-  <link rel="stylesheet" href="../style.css">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -14,7 +15,7 @@
     <!-- Шапка -->
     <header class="header">
       <h1>📚 Book Tracker</h1>
-      <button id="themeToggle" aria-label="Переключить тему">🌙</button>
+      <button id="themeToggle">🌙</button>
     </header>
 
     <!-- Действия -->
@@ -22,19 +23,19 @@
       <a href="add.html" class="add-btn">➕ Добавить книгу</a>
     </div>
 
-    <!-- Секция книг -->
+    <!-- Книги -->
     <main class="card">
       <h2>Мои книги</h2>
 
-      <div id="booksContainer" class="books-grid">
-        <!-- Книги будут добавляться через JS -->
-      </div>
+      <div id="booksContainer" class="books-grid"></div>
     </main>
 
   </div>
 
+  <!-- СКРИПТЫ (ВАЖЕН ПОРЯДОК) -->
   <script src="data.js"></script>
-  <script src="app.js"></script>
   <script src="theme.js"></script>
+  <script src="app.js"></script>
 
 </body>
+</html>
