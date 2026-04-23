@@ -49,11 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
         ? Math.round((book.readPages / book.totalPages) * 100)
         : 0;
 
-      // ✅ СНАЧАЛА создаём карточку
+      // создаём карточку
       const card = document.createElement("div");
       card.className = "book-card";
 
-      // ✅ ПОТОМ добавляем клик
+      // добавляем клик
       card.addEventListener("click", () => {
         window.location.href = `book.html?id=${book.id}`;
       });

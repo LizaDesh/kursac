@@ -50,16 +50,14 @@ document.addEventListener("DOMContentLoaded", () => {
             <option value="planned">Отложил</option>
           </select>
 
-          <input type="range"
-            id="progress"
-            min="0"
-            max="${book.totalPages || 1}"
-            value="${book.readPages}">
+          <div class="big-progress">
+  <div class="big-progress-fill" style="width:${percent}%"></div>
+</div>
 
           <input id="pagesToday" type="number" placeholder="+ страницы">
           <button id="addBtn">Добавить</button>
 
-          <div id="history"></div>
+          <canvas id="chart" height="120"></canvas>
 
         </div>
       </div>
@@ -78,25 +76,38 @@ document.addEventListener("DOMContentLoaded", () => {
       saveData();
     };
 
-    document.getElementById("progress").oninput = (e) => {
-      book.readPages = Number(e.target.value);
-      saveData();
-      render();
-    };
+   document.getElementById("addBtn").onclick = () => {
 
-    document.getElementById("addBtn").onclick = () => {
+  const input = document.getElementById("pagesToday");
+  let pages = Number(input.value);
 
-      const input = document.getElementById("pagesToday");
-      const pages = Number(input.value);
+  // ❌ пусто или не число
+  if (!pages || isNaN(pages)) {
+    alert("Введите количество страниц");
+    return;
+  }
 
-      if (!pages) return;
+  // ❌ нельзя отрицательные
+  if (pages <= 0) {
+    alert("Нельзя добавлять отрицательные или нулевые страницы");
+    return;
+  }
 
-      book.readPages += pages;
-      book.history.push({ pages });
+  // ❌ нельзя больше чем есть
+  if (book.readPages + pages > book.totalPages) {
+    alert("Нельзя прочитать больше, чем есть в книге");
+    return;
+  }
 
-      saveData();
-      render();
-    };
+  // ✅ всё ок
+  book.readPages += pages;
+  book.history.push({ pages });
+
+  input.value = "";
+
+  saveData();
+  render();
+};
   }
 
   function renderHistory() {
@@ -104,4 +115,35 @@ document.addEventListener("DOMContentLoaded", () => {
       book.history.map(h => `+${h.pages} стр.`).join("<br>");
   }
 
+  function renderChart() {
+
+  const ctx = document.getElementById("chart");
+
+  if (!ctx) return;
+
+  const data = book.history.map((h, i) => i + 1);
+  const pages = book.history.map(h => h.pages);
+
+  new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: data,
+      datasets: [{
+        label: "Прогресс чтения",
+        data: pages,
+        tension: 0.3
+      }]
+    },
+    options: {
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        x: { display: false },
+        y: { display: false }
+      }
+    }
+  });
+  renderChart();
+}
 });
