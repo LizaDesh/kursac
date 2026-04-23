@@ -1,3 +1,4 @@
+// Ждём загрузки страницы
 document.addEventListener("DOMContentLoaded", () => {
 
   const container = document.getElementById("booksContainer");
@@ -17,11 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const btn = e.target.closest(".delete-btn");
     if (!btn) return;
 
+    e.stopPropagation(); // ❗ чтобы не срабатывал клик по карточке
+
     deleteBook(Number(btn.dataset.id));
     saveData();
     renderBooks();
   });
 
+  // Тема
   if (typeof initTheme === "function") {
     initTheme();
   }
@@ -45,9 +49,16 @@ document.addEventListener("DOMContentLoaded", () => {
         ? Math.round((book.readPages / book.totalPages) * 100)
         : 0;
 
+      // ✅ СНАЧАЛА создаём карточку
       const card = document.createElement("div");
       card.className = "book-card";
 
+      // ✅ ПОТОМ добавляем клик
+      card.addEventListener("click", () => {
+        window.location.href = `book.html?id=${book.id}`;
+      });
+
+      // HTML карточки
       card.innerHTML = `
         <div class="book-cover-wrapper">
           <img src="${book.image}" class="book-cover">
@@ -76,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
       container.appendChild(card);
     });
 
-    // ===== + КАРТОЧКА =====
+    // ===== КАРТОЧКА "ЕЩЁ" =====
     if (isHome && books.length > 3) {
 
       const moreCount = books.length - 3;

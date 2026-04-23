@@ -23,18 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
       image = "https://via.placeholder.com/200x300?text=No+Cover";
     }
 
-    const book = {
-      id: Date.now(),
-      title,
-      author,
-      totalPages: pages,
-      readPages: 0,
-      status: "reading",
-      image
-    };
-    
-    books.push(book);
-    saveData();
+addBook({
+  title,
+  author,
+  totalPages: pages,
+  image
+});
     
     window.location.href = "index.html";
   });

@@ -100,6 +100,43 @@ body.loaded {
   transform: scale(0.9);
 }
 
+/* ===================================================== */
+/* ===================== КНОПКА НАЗАД =================== */
+/* ===================================================== */
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 10px 14px;
+  border-radius: 10px;
+
+  text-decoration: none;
+  font-size: 13px;
+
+  color: var(--color-text);
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--color-card-border);
+
+  backdrop-filter: blur(10px);
+
+  transition: all 0.25s ease;
+}
+
+/* эффект при наведении */
+.back-btn:hover {
+  transform: translateX(-3px);
+  box-shadow: 0 5px 15px var(--color-glow);
+  background: rgba(255,255,255,0.15);
+}
+
+/* при нажатии */
+.back-btn:active {
+  transform: scale(0.95);
+}
+
 /* ===================== */
 /* ===== КНОПКА ДОБАВИТЬ ===== */
 .actions {
@@ -292,13 +329,24 @@ body.loaded {
   font-size: 12px;
   border-radius: 8px;
   cursor: pointer;
+  
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--color-card-border);
+  color: var(--color-text);
+  transition: 0.3s;
+}
+
+.delete-btn:hover {
+  background: rgba(185, 28, 28, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px var(--color-glow);
 }
 /* ===================== */
 /* ===== ПРОГРЕСС ===== */
 .progress-bar {
   width: 100%;
   height: 6px;
-  background: rgba(0,0,0,0.05);
+  background: rgba(255,255,255,0.08);
   border-radius: 10px;
   overflow: hidden;
   margin-top: 6px;
@@ -460,4 +508,50 @@ body.light {
     radial-gradient(circle at bottom right, var(--color-bg-gradient2), transparent 50%),
     var(--color-bg);
   transition: all 0.4s ease;
+}
+
+/* ===== СТРАНИЦА КНИГИ ===== */
+
+.book-detail {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  background: var(--color-card-bg);
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid var(--color-card-border);
+  backdrop-filter: blur(15px);
+}
+
+.detail-cover {
+  width: 200px;
+  border-radius: 12px;
+}
+
+.detail-info {
+  flex: 1;
+}
+
+.detail-info select,
+.detail-info input {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.day-input {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.history {
+  margin-top: 15px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.history-item {
+  font-size: 12px;
+  opacity: 0.8;
 }
